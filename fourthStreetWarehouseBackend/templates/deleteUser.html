@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <style>
+            .top-bar {
+                /* color: white; */
+                background-color: burlywood;
+                width: 100%;
+                height: 8%;
+                padding: 10px;
+                margin: 0;
+            }
+            body {
+                margin: 0;
+                background-image: url('/static/img/warehouse.jpeg');
+                background-size: cover;
+            }
+            .main-body {
+                padding: 8px;
+            }
+            .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+            .form-group {
+                margin: 1rem 0;
+            }
+            .form-submit {
+                margin-top: 2rem;
+            }
+            .form-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 999;
+            }
+            .card {
+                background-color: rgba(255, 255, 255, 0.8);
+                width: 300px;
+            }
+            .card-body {
+                padding: 2%;
+            }
+            .card-header {
+                padding: 1%;
+            }
+            .buttons-container {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+            }
+            .button {
+                margin-right: 10px;
+            }
+            .login-container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .submit-button {
+                width: 20%
+            }
+        </style>
+    </head>
+    <div class="top-bar">
+        <h1>FourthStreet Warehouse</h1>
+    </div>
+    <body>
+        <!-- <div class="bg-image">
+            <img src="/static/img/warehouse.jpeg" alt="warehouse.jpeg"/>
+        </div> -->
+        <div class="main-body">
+            <div class="container form-container h-100 w-80">
+                <div class="row h-100 justify-content-center align-items-center">
+                  <div class="col-sm-12">
+                    <div class="card">
+                      <div class="card-header"><h2>Delete Profile</h2></div>
+                      <div class="card-body">
+                        <form method="POST" action="/deleteUser">
+                            <div class="login-container">
+                                <label for="email">Please Enter Email</label>
+                                <input name="email" id="email"/>
+                                <label for="password">Please Enter The Password</label>
+                                <input name="password" id="password"/>
+                                <input class="submit-button" type="submit" value="Submit">
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

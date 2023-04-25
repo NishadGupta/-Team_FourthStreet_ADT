@@ -1,0 +1,140 @@
+<div class="data">{{ text }}</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .data {
+                display: none;
+            }
+            .top-bar {
+                /* color: white; */
+                background-color: burlywood;
+                width: 100%;
+                height: 8%;
+                padding: 10px;
+                margin: 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-right: 30px;
+            }
+            body {
+                margin: 0;
+                background-image: url('/static/img/warehouse.jpeg');
+                background-size: cover;
+            }
+            .main-body {
+                padding: 8px;
+            }
+            .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: start;
+                height: 100vh;
+            }
+            .form-group {
+                margin: 1rem 0;
+            }
+            .form-submit {
+                margin-top: 2rem;
+            }
+            /* .form-container {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, 0);
+                z-index: 999;
+            } */
+            .card {
+                background-color: rgba(255, 255, 255, 0.8);
+                width: 300px;
+            }
+            .card-body {
+                padding: 2%;
+                display: flex;
+                flex-direction: column;
+            }
+            .card-header {
+                padding-left: 1%;
+            }
+            .buttons-container {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                margin-right: 30px;
+            }
+            .button {
+                margin-right: 10px;
+            }
+            .login-container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .submit-button {
+                width: 20%
+            }
+            .products-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+        </style>
+    </head>
+    <div class="top-bar">
+        <h1 style="width: 500px !important;">FourthStreet Warehouse</h1>
+        <span class="buttons-container">
+            <form method="GET" action="/delete_product">
+                <input class="button" type="submit" value="See your listings">
+            </form>
+            <form method="GET" action="/add_product">
+                <input class="button" type="submit" value="Sell your items">
+            </form>
+            <form method="GET" action="/message">
+                <input class="button" type="submit" value="Inbox">
+            </form>
+        </span>
+    </div>
+    <body>
+        <!-- <div class="bg-image">
+            <img src="/static/img/warehouse.jpeg" alt="warehouse.jpeg"/>
+        </div> -->
+        <div class="main-body">
+            <div class="container form-container h-100 w-80">
+                <div class="row h-100 justify-content-center align-items-center">
+                  <div class="col-sm-12">
+                    <div class="products-container"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        get_product_card = (product) => {
+            return `<div class="card">
+                    <div class="card-header"><h4>${product.productName}</h4></div>
+                    <div class="card-body">
+                        <img src = "${product.img}">
+                        <span>Description - ${product.description}</span>
+                        <span>Condition - ${product.condition}</span>
+                        <span>Date - ${product.date}</span>
+                    </div>
+                    <form method="POST" action="/message">
+                        <input type="text" name="message" id="message"></input>
+                        <input type="text" name="productId" id="productId" style="display: none" value="${product.productId}"></input>
+                        <input class="button" type="submit" value="Message Seller"/>
+                    </form>`
+        }
+
+        data = document.querySelector('div.data').innerHTML
+        data = JSON.parse(data)
+
+        products = data.map(product => get_product_card(product))
+        console.log(data[21])
+
+       products.map(product => document.querySelector('div.products-container').innerHTML += product)
+    </script>
+</html>

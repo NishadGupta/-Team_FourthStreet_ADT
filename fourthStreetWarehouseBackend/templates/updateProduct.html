@@ -1,0 +1,130 @@
+<div class="data">{{ text }}</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .data {
+                display: none;
+            }
+            .top-bar {
+                /* color: white; */
+                background-color: burlywood;
+                width: 100%;
+                height: 8%;
+                padding: 10px;
+                margin: 0;
+            }
+            body {
+                margin: 0;
+                background-image: url('/static/img/warehouse.jpeg');
+                background-size: cover;
+            }
+            .main-body {
+                padding: 8px;
+            }
+            .form-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 999;
+            }
+            .form-group {
+                margin: 1rem 0;
+            }
+            .form-submit {
+                margin-top: 2rem;
+            }
+            /* .form-container {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, 0);
+                z-index: 999;
+            } */
+            .card {
+                background-color: rgba(255, 255, 255, 0.8);
+                width: 300px;
+            }
+            .card-body {
+                padding: 2%;
+                display: flex;
+                flex-direction: column;
+            }
+            .card-header {
+                padding-left: 1%;
+            }
+            .buttons-container {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+            }
+            .button {
+                margin-right: 10px;
+            }
+            .login-container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .submit-button {
+                width: 20%
+            }
+            .products-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+        </style>
+        <!-- <script>
+            const currentDate = new Date();
+            const day = String(currentDate.getDate()).padStart(2, '0');
+            const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+            const year = currentDate.getFullYear();
+            const formattedDate = day + '/' + month + '/' + year;
+        </script> -->
+    </head>
+    <div class="top-bar">
+        <h1>FourthStreet Warehouse</h1>
+    </div>
+    <body>
+        <div class="main-body">
+            <div class="container form-container h-100 w-80">
+                <div class="row h-100 justify-content-center align-items-center">
+                  <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header"><h2>Update Product</h2></div>
+                        <div class="card-body">
+                          <form method="POST" action="/update_product" id="add-product">
+                            <div class="login-container">
+                                <input name="productId" id="productId" style="display: none"/>
+                                <label for="productName">Product Name</label>
+                                <input name="productName" id="productName"/>
+                                <label for="description">Description</label>
+                                <input name="description" id="description"/>
+                                <label for="product_condition">Product Condition</label>
+                                <input name="product_condition" id="product_condition"/>
+                                <input class="submit-button" type="submit" value="Submit">
+                            </div>
+                          </form>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        data = document.querySelector('div.data').innerHTML
+        data = JSON.parse(data)
+        data = data[0]
+        
+        document.getElementById('productName').value = data.productName
+        document.getElementById('description').value = data.description
+        document.getElementById('product_condition').value = data.condition
+        document.getElementById('productId').value = data.productId
+    </script>
+</html>
